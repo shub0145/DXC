@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>REGISTRATION FORM</title>
+	<script type="text/javascript">
+		function validate()
+		{
+			var a=document.getElementById('xyz').value;
+			var b=document.getElementById('wxyz').value;
+			if((a!==b))
+			{
+				alert("password not same");
+			}
+		}
+		type =['graduation','Postgraduation'];
+
+data=[['ECE','CSE','EEE'],['MS','MTECH','CA'],];
+
+
+function fillDD()
+{
+var Typedd =document.getElementById('type');
+for(i=0;i<type.length;i++)
+{
+var ele= document.createElement('option');
+ele.text=type[i];
+Typedd.add(ele,i+1);
+
+}
+}
+
+
+function fillData()
+{
+
+var Typedd =document.getElementById('type');
+var selectedIdx= Typedd.selectedIndex;
+
+var Datadd =document.getElementById('data');
+
+Datadd.innerText=null;
+var ele=document.createElement('option');
+ele.text="SELECT";
+Datadd.add(ele,0);
+
+for(i=0;i<data[selectedIdx-1].length;i++)
+{
+var ele=document.createElement('option');
+ele.text=data[selectedIdx-1][i];
+Datadd.add(ele,i+1);
+
+}
+
+}
+function dobValidate() {
+
+var date= new Date();
+
+var year=date.getFullYear();
+var year=year-18;
+var month=date.getMonth()+1;
+var dd=date.getDate();
+
+if(month<10)
+{
+month='0'+month;
+}
+if(dd<10)
+{
+dd=0+""+dd;
+}
+
+document.getElementById('dob').max=year+"-"+month+"-"+dd;
+
+}
+
+
+		
+		
+
+
+
+	</script>
+
+</head>
+<body>
+	<form>
+	<body onload="fillDD()">
+	<center>
+	<h2> REGISTRATION FORM</h2></h2>
+	<input type="text" size="75px" placeholder="First Name" id='fstname'name="" required></br></br>
+	<input type="text" size="75px" placeholder="Last Name" id='lastname' name="" required ></br></br>
+	<input type="email"size="75px" placeholder="EMAIL ID" id="eid" name="" required></br></br>
+	<input type="password" size="75px" placeholder="Enter Password" id='xyz'required ></br></br>
+	<input type="password" size="75px" placeholder="Confirm Password" id='wxyz'required ></br></br>
+	              <input type="submit" id='sub' onclick="validate()" name=""><br></br>
+	              <p><b>Enter Date of Birth</b></p></br>
+	<input type="date" id="dob" onclick="dobValidate()"></br></br>
+
+	
+<p><b>Enter Course Details</b></p></br>
+<select id="type" onchange="fillData()">
+<option>SELECT DEGREE</option>
+</select>
+
+
+<select id="data">
+<option>SELECT COURSE</option>
+</select>
+</form>
+
+</body>
+</center>
+
+</body>
+</html>
